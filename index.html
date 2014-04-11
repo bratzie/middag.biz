@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<link rel="icon" type="image/png" href="resources/newnote.png">-->
+    <title>middag.biz</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+
+<div id="foods"></div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script>
+	(function() {
+		$("#foods").html("");
+		var URL = "http://nikal.se:8080/icabac";
+		$.getJSON( URL, {
+		}).done(function( data ) {
+			console.log( data );
+			$.each( data.ingredients, function( i, ingredient ) {
+				var mystring = "<p>" + ingredient + "</p>";
+				$("#foods").append(mystring);
+				/*
+				$( "<li>" ).attr( "src", ingredient ).appendTo( "#foods" );
+				if ( i === 3 ) {
+					return false;
+				}
+				*/
+			});
+		});
+	})();
+/*
+	var mystring = '<div data-collectionid="'+coll.getId()+'" class="usercollection';
+			mystring += (activecollection === coll.getId() ? ' selected' : '');
+			mystring += '"><button class="deletecollection">x</button><h1 class="lightred">'+coll.getTitle().toUpperCase()+'</h1><h2 class="darkred">'+coll.getSubtitle()+'</h2></div>';
+
+			$('#usercollections').append(mystring);
+			*/
+</script>
+</body>
+</html>
+
